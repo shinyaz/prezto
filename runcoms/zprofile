@@ -17,8 +17,8 @@ fi
 # Editors
 #
 
-export EDITOR='nano'
-export VISUAL='nano'
+export EDITOR='vim'
+export VISUAL='vim'
 export PAGER='less'
 
 #
@@ -27,6 +27,13 @@ export PAGER='less'
 
 if [[ -z "$LANG" ]]; then
   export LANG='en_US.UTF-8'
+fi
+
+#
+# Go
+#
+if [[ -z "$GOPATH" ]]; then
+  export GOPATH=$HOME/Developments
 fi
 
 #
@@ -44,6 +51,7 @@ typeset -gU cdpath fpath mailpath path
 # Set the list of directories that Zsh searches for programs.
 path=(
   /usr/local/{bin,sbin}
+  $GOPATH/bin
   $path
 )
 
@@ -66,11 +74,4 @@ fi
 # Alias
 #
 alias tmux='tmux -f "$XDG_CONFIG_HOME"/tmux/tmux.conf'
-
-#
-# Go
-#
-if [[ -z "$GOPATH" ]]; then
-  export GOPATH=$HOME/Developments
-fi
 
